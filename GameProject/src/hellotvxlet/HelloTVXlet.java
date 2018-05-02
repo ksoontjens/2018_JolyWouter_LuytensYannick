@@ -6,6 +6,8 @@ import javax.tv.xlet.*;
 public class HelloTVXlet implements Xlet {
 
   
+    Ball ball;
+    
     public HelloTVXlet() {
         
     }
