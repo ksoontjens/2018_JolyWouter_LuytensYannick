@@ -7,21 +7,27 @@ package hellotvxlet;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import org.havi.ui.HComponent;
 
 /**
  *
  * @author student
  */
-class Ball {
+public class Ball extends HComponent{
 
+    private int x = 10;
+    private int y = 10;
+    private int ballSize = 30;
     
-    private int x;
-    private int y;
-    private int ballSize = 4;
+    public Ball(int a, int b)
+    {
+        this.setBounds(a, b,100,100);
+    }
     
-    public void paint(Graphics g){
+    public void paint(Graphics g)
+    {
         g.setColor(Color.WHITE);
-        g.fillOval(x, y, ballSize, ballSize);
+        g.fillOval(0, 0, ballSize, ballSize);
         
     }
 }
