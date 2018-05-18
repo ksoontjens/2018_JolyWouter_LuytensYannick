@@ -19,11 +19,21 @@ public class Rectangle extends HComponent{
 
     private int Width = 20;
     private int Height = 100;
+    //private int xPos = 0;
+    public int yPos = 0;
+    int xPos = 0;
     
-   public Rectangle(int x, int y)
+   public Rectangle(int x)
     {
-        this.setBounds(x,y,20,100);
+        this.setBounds(x,yPos,20,100);
+        xPos = x;
     }
+   
+   public void moverel(int x, int y){
+       this.xPos += x;
+       this.yPos += y;
+       this.setBounds(xPos, yPos, 20, 100);
+   }
 
       public void paint (Graphics g)
   {

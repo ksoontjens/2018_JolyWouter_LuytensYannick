@@ -14,11 +14,15 @@ import java.util.TimerTask;
 public class Update extends TimerTask{
 
     public Ball ball;
+    public Rectangle rectangle1;
+    public Rectangle rectangle2;
 
     public void run() {
         //System.out.println("tick");
      
 
-    ball.repaint();
+    //ball.repaint();
+    rectangle1.repaint();
+    rectangle2.repaint();
     }
 }
