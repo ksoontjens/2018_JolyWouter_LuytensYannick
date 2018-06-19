@@ -1,10 +1,10 @@
 Signature-Version: 1.0
 Created-By: 1.6.0_16 (Sun Microsystems Inc.)
 BDJ-Signature-Version: 1.0
-SHA1-Digest-Manifest: q3IdSc2JhefbrgYzcgGzgGK0ojA=
+SHA1-Digest-Manifest: zsCgH8x1ZWJxHUOJkj+3vS43lFo=
 
 Name: hellotvxlet/HelloTVXlet.class
-SHA1-Digest: VaTOsqdFs5zxF7qsRGkRNeQffAs=
+SHA1-Digest: be/pmG76ey+OuLbWjxavDKAM1uw=
 
 Name: hellotvxlet/HelloTVXlet$1.class
 SHA1-Digest: jL4rl+dtvgbj4VErj8qjkXfGCe4=
@@ -22,11 +22,14 @@ Name: hellotvxlet/bluray.HelloTVXlet.perm
 SHA1-Digest: 84ZO/rYCyy0JStmaLbg1GDVEFhQ=
 
 Name: hellotvxlet/Ball.class
-SHA1-Digest: 0hY76aOlGOECQKzuGgKh2Ag9jL0=
+SHA1-Digest: E0ySgb41TRIuUFI6n6QrnIjYFqM=
 
 Name: hellotvxlet/Update.class
-SHA1-Digest: TCpuIc5Ug270oxpu32tsZIJm/bU=
+SHA1-Digest: mouYKBfgftxHDS26yKprFTTIGEM=
 
 Name: Pang/Ball.class
 SHA1-Digest: /F12xMfWaxb0CF69GTmbszYbSpA=
+
+Name: hellotvxlet/FieldAndScore.class
+SHA1-Digest: PoITwQivZF3AlZS/Mn5I7SRBW3M=
 

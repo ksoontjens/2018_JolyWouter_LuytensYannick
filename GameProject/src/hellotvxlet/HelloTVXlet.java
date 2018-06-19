@@ -14,7 +14,7 @@ import org.havi.ui.HSceneFactory;
 
 public class HelloTVXlet implements Xlet , UserEventListener {
     
-    
+    FieldAndScore background;
     Ball ball;
     Rectangle rectangle1;
     Rectangle rectangle2;
@@ -49,18 +49,22 @@ public class HelloTVXlet implements Xlet , UserEventListener {
      scene = HSceneFactory.getInstance().getDefaultHScene();
      // SCHERM = 720 x 576 
      
-     ball = new Ball(20, 20);
+     background = new FieldAndScore();
+     
+     ball = new Ball(0, 0, background);
      
      rectangle1 = new Rectangle(0);
      
      
-     rectangle2 = new Rectangle(50);
+     rectangle2 = new Rectangle(720-20);
      
      //rectangle1.paint(g);
+     
      
      scene.add(ball);
      scene.add(rectangle1);
      scene.add(rectangle2);
+     scene.add(background);
      
      scene.validate();
      scene.setVisible(true); 
@@ -71,6 +75,7 @@ public class HelloTVXlet implements Xlet , UserEventListener {
      
      //Repository
      UserEventRepository repository = new UserEventRepository("Voorbeeld");
+     repository.addAllArrowKeys();
      
      //Events toevoegen
      repository.addKey(org.havi.ui.event.HRcEvent.VK_UP);
@@ -81,9 +86,11 @@ public class HelloTVXlet implements Xlet , UserEventListener {
      manager.addUserEventListener(this, repository);
      
      
+     
      Update update = new Update();
-     update.rectangle1 = rectangle1;
+     //update.rectangle1 = rectangle1;
      update.rectangle2 = rectangle2;
+     update.ball = ball;
      
      Timer t = new Timer();
      t.scheduleAtFixedRate(update, 0, 5);
