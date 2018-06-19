@@ -48,12 +48,12 @@ public class Ball extends HComponent{
         x += xMoveSpeed;
         y += yMoveSpeed;
         
-        if(x < 0){
+        if(x < 0-ballSize+10){
             reset();
             score.ScorePoint(false);
             score.repaint();
             //xMoveSpeed = 1;
-        } else if(x > 720-30){
+        } else if(x > 720-10){
             reset();
             score.ScorePoint(true);
             score.repaint();
@@ -63,23 +63,25 @@ public class Ball extends HComponent{
             yMoveSpeed *= -1;
         } 
         
-        if(x < computer.Width && y < computer.yPos && y > player.yPos - player.Height){
-            xMoveSpeed *= -1;
-            if(r.nextBoolean()&& (xMoveSpeed > yMoveSpeed -2 || xMoveSpeed < yMoveSpeed + 2)){
-                xMoveSpeed += 1;
+        if(x < player.Width && y > player.yPos-20 && y+30 < player.yPos + player.Height+20){
+            
+            if(r.nextBoolean()&& (xMoveSpeed > yMoveSpeed -2 && xMoveSpeed < yMoveSpeed + 2)){
+                xMoveSpeed += xMoveSpeed/Math.abs(xMoveSpeed);
             }
-            if(r.nextBoolean()&& (yMoveSpeed > xMoveSpeed -2 || yMoveSpeed < xMoveSpeed + 2)){
-                yMoveSpeed += 1;
+            if(r.nextBoolean()&& (yMoveSpeed > xMoveSpeed -2 && yMoveSpeed < xMoveSpeed + 2)){
+                yMoveSpeed += yMoveSpeed/Math.abs(yMoveSpeed);
             }
+            xMoveSpeed = Math.abs(xMoveSpeed);
         }
-        if(x > 576-computer.Width && y < computer.yPos && y > computer.yPos - computer.Height){
-            xMoveSpeed *= -1;
-            if(r.nextBoolean()&& (xMoveSpeed > yMoveSpeed -2 || xMoveSpeed < yMoveSpeed + 2)){
-                xMoveSpeed += 1;
+        if(x > 720-computer.Width-ballSize && y > computer.yPos-20 && y+30 < computer.yPos + computer.Height+20){
+            
+            if(r.nextBoolean()&& (xMoveSpeed > yMoveSpeed -2 && xMoveSpeed < yMoveSpeed + 2)){
+                xMoveSpeed += xMoveSpeed/Math.abs(xMoveSpeed);
             }
-            if(r.nextBoolean()&& (yMoveSpeed > xMoveSpeed -2 || yMoveSpeed < xMoveSpeed + 2)){
-                yMoveSpeed += 1;
+            if(r.nextBoolean()&& (yMoveSpeed > xMoveSpeed -2 && yMoveSpeed < xMoveSpeed + 2)){
+                yMoveSpeed += yMoveSpeed/Math.abs(yMoveSpeed);
             }
+            xMoveSpeed = -Math.abs(xMoveSpeed);
         }
     }
     
@@ -87,8 +89,8 @@ public class Ball extends HComponent{
         
         x = 720/2;
         y = 88 + r.nextInt(400);
-        yMoveSpeed = 1;
-        xMoveSpeed = 1;
+        yMoveSpeed = yMoveSpeed/Math.abs(yMoveSpeed);
+        xMoveSpeed = xMoveSpeed/Math.abs(xMoveSpeed);
         if(r.nextBoolean()){
             yMoveSpeed *= -1;
         }

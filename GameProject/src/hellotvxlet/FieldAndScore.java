@@ -8,7 +8,6 @@ package hellotvxlet;
 import java.awt.Color;
 import java.awt.Graphics;
 import org.havi.ui.HComponent;
-import org.havi.ui.HStaticText;
 
 /**
  *

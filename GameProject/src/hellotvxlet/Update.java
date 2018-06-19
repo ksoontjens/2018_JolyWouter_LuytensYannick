@@ -25,15 +25,19 @@ public class Update extends TimerTask{
 
     ball.move();
     
-    if(rectangle2.yPos > ball.y + 15){
-        rectangle2.moverel(0, -5);
+    rectangle1.movePlayer();
+    
+    if(rectangle2.yPos > ball.y-90){
+        rectangle2.moverel(-2);
     }
-    if(rectangle2.yPos + rectangle2.Height < ball.y - 15){
-        rectangle2.moverel(0,5);
+    if(rectangle2.yPos + rectangle2.Height < ball.y+60){
+        rectangle2.moverel(2);
     }
+    
+    
     
     ball.repaint();
     //rectangle1.repaint();
-    rectangle2.repaint();
+    //rectangle2.repaint();
     }
 }

@@ -7,7 +7,6 @@ package hellotvxlet;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import org.dvb.ui.DVBColor;
 import org.havi.ui.HComponent;
 
 /**
@@ -23,22 +22,50 @@ public class Rectangle extends HComponent{
     public int yPos = 0;
     int xPos = 0;
     
+    public boolean buttonPressed = false;;
+    public boolean buttonUp = true;
+    
    public Rectangle(int x)
     {
-        this.setBounds(x,yPos,20,100);
-        xPos = x;
+       xPos = x;
+       this.setBounds(0,yPos,720,576);
+        
     }
    
-   public void moverel(int x, int y){
-       this.xPos += x;
-       this.yPos += y;
-       this.setBounds(xPos, yPos, 20, 100);
+   public void movePlayer(){
+       if(yPos >= 0 && yPos <= 576-Height){
+           if(buttonPressed){
+        if(buttonUp){
+            yPos -= 2;
+        } else{
+            yPos += 2;
+        }
+    }
+       }
+       
+       if(yPos < 0){
+            yPos = 0;
+       } else if (yPos > 576-Height){
+            yPos = 576-Height;
+       }
+   }
+   
+   public void moverel(int y){
+       if(yPos >= 0 && yPos <= 576-Height){
+           this.yPos += y;
+       }
+       
+       if(yPos < 0){
+            yPos = 0;
+       } else if (yPos > 576-Height){
+            yPos = 576-Height;
+       }
    }
 
       public void paint (Graphics g)
   {
       g.setColor(Color.WHITE);
-      g.fillRoundRect(0, 0, Width, Height, 20, 20);
+      g.fillRoundRect(xPos, yPos, Width, Height, 20, 20);
   }
         
     }

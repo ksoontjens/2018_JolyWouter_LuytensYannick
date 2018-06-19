@@ -87,41 +87,34 @@ public class HelloTVXlet implements Xlet , UserEventListener {
      
      
      Update update = new Update();
-     //update.rectangle1 = rectangle1;
+     
+     update.rectangle1 = rectangle1;
      update.rectangle2 = rectangle2;
      update.ball = ball;
      
      Timer t = new Timer();
-     t.scheduleAtFixedRate(update, 0, 5);
+     t.scheduleAtFixedRate(update, 0, 7);
     }
     
     public void userEventReceived(UserEvent e) {
         if(e.getType()==KeyEvent.KEY_PRESSED){
+            rectangle1.buttonPressed = true;
             System.out.println("Pushed Button");
             switch(e.getCode()){
                 case HRcEvent.VK_UP:
-                    rectangle1.moverel(0, -10);
-                    //System.out.println("Up");
+                    rectangle1.buttonUp = true;
+                    System.out.println(rectangle1.yPos);
                     rectangle1.repaint();
                     break;
                 case HRcEvent.VK_DOWN:
-                    rectangle1.moverel(0, 10);
+                    rectangle1.buttonUp = false;
                     //System.out.println("Down");
                     rectangle1.repaint();
                     break;   
             }
-            switch(e.getCode()){
-                case HRcEvent.VK_Z:
-                    rectangle2.moverel(0, -10);
-                    System.out.println("up");
-                    rectangle2.repaint();
-                    break;
-                case HRcEvent.VK_S:
-                    rectangle2.moverel(0, 10);
-                    System.out.println("Down");
-                    rectangle2.repaint();
-                    break;
-            }
+            
+        } else{
+            rectangle1.buttonPressed = false;
         }
     }
 }
