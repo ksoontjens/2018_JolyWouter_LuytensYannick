@@ -17,8 +17,8 @@ import org.havi.ui.HComponent;
 public class Rectangle extends HComponent{
     
 
-    private int Width = 20;
-    private int Height = 100;
+    public int Width = 20;
+    public int Height = 100;
     //private int xPos = 0;
     public int yPos = 0;
     int xPos = 0;

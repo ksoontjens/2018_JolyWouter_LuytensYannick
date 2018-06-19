@@ -19,6 +19,7 @@ public class FieldAndScore extends HComponent{
     private int playerPoints = 0;
     private int computerPoints = 0;
     
+    
     public Ball ball;
     
     public FieldAndScore (){
@@ -32,6 +33,7 @@ public class FieldAndScore extends HComponent{
             
         } else{
             computerPoints ++;
+            
             System.out.println(computerPoints);
             
         }
@@ -49,7 +51,7 @@ public class FieldAndScore extends HComponent{
         g.drawString(pScore, 720/2 - g.getFontMetrics().stringWidth(pScore)-35, 25);
         
         g.setColor(Color.WHITE);
-        String cScore = "Computer: " + playerPoints;
+        String cScore = "Computer: " + computerPoints;
         g.drawString(cScore, 720/2+25, 25);
     }
 }

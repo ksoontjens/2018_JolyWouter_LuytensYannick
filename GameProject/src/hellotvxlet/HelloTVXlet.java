@@ -51,12 +51,11 @@ public class HelloTVXlet implements Xlet , UserEventListener {
      
      background = new FieldAndScore();
      
-     ball = new Ball(0, 0, background);
-     
      rectangle1 = new Rectangle(0);
      
-     
      rectangle2 = new Rectangle(720-20);
+     
+     ball = new Ball(rectangle1, rectangle2, background);
      
      //rectangle1.paint(g);
      
