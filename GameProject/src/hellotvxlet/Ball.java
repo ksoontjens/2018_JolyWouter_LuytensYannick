@@ -27,6 +27,7 @@ public class Ball extends HComponent{
     private Random r = new Random();
     private Rectangle player;
     private Rectangle computer;
+    static public boolean start = false;
     
     public Ball(Rectangle p, Rectangle c, FieldAndScore fScore)
     {
@@ -45,43 +46,47 @@ public class Ball extends HComponent{
     }
     
     public void move(){
-        x += xMoveSpeed;
-        y += yMoveSpeed;
         
-        if(x < 0-ballSize+10){
-            reset();
-            score.ScorePoint(false);
-            score.repaint();
-            //xMoveSpeed = 1;
-        } else if(x > 720-10){
-            reset();
-            score.ScorePoint(true);
-            score.repaint();
-            //xMoveSpeed = -1;
-        }
-        if(y < 0 || y > 576-30 ){
-            yMoveSpeed *= -1;
-        } 
-        
-        if(x < player.Width && y > player.yPos-20 && y+30 < player.yPos + player.Height+20){
-            
-            if(r.nextBoolean()&& (xMoveSpeed > yMoveSpeed -2 && xMoveSpeed < yMoveSpeed + 2)){
-                xMoveSpeed += xMoveSpeed/Math.abs(xMoveSpeed);
+        if (start)
+        {
+            x += xMoveSpeed;
+            y += yMoveSpeed;
+
+            if(x < 0-ballSize+10){
+                reset();
+                score.ScorePoint(false);
+                score.repaint();
+                //xMoveSpeed = 1;
+            } else if(x > 720-10){
+                reset();
+                score.ScorePoint(true);
+                score.repaint();
+                //xMoveSpeed = -1;
             }
-            if(r.nextBoolean()&& (yMoveSpeed > xMoveSpeed -2 && yMoveSpeed < xMoveSpeed + 2)){
-                yMoveSpeed += yMoveSpeed/Math.abs(yMoveSpeed);
+            if(y < 0 || y > 576-30 ){
+                yMoveSpeed *= -1;
+            } 
+
+            if(x < player.Width && y > player.yPos-20 && y+30 < player.yPos + player.Height+20){
+
+                if(r.nextBoolean()&& (xMoveSpeed > yMoveSpeed -2 && xMoveSpeed < yMoveSpeed + 2)){
+                    xMoveSpeed += xMoveSpeed/Math.abs(xMoveSpeed);
+                }
+                if(r.nextBoolean()&& (yMoveSpeed > xMoveSpeed -2 && yMoveSpeed < xMoveSpeed + 2)){
+                    yMoveSpeed += yMoveSpeed/Math.abs(yMoveSpeed);
+                }
+                xMoveSpeed = Math.abs(xMoveSpeed);
             }
-            xMoveSpeed = Math.abs(xMoveSpeed);
-        }
-        if(x > 720-computer.Width-ballSize && y > computer.yPos-20 && y+30 < computer.yPos + computer.Height+20){
-            
-            if(r.nextBoolean()&& (xMoveSpeed > yMoveSpeed -2 && xMoveSpeed < yMoveSpeed + 2)){
-                xMoveSpeed += xMoveSpeed/Math.abs(xMoveSpeed);
+            if(x > 720-computer.Width-ballSize && y > computer.yPos-20 && y+30 < computer.yPos + computer.Height+20){
+
+                if(r.nextBoolean()&& (xMoveSpeed > yMoveSpeed -2 && xMoveSpeed < yMoveSpeed + 2)){
+                    xMoveSpeed += xMoveSpeed/Math.abs(xMoveSpeed);
+                }
+                if(r.nextBoolean()&& (yMoveSpeed > xMoveSpeed -2 && yMoveSpeed < xMoveSpeed + 2)){
+                    yMoveSpeed += yMoveSpeed/Math.abs(yMoveSpeed);
+                }
+                xMoveSpeed = -Math.abs(xMoveSpeed);
             }
-            if(r.nextBoolean()&& (yMoveSpeed > xMoveSpeed -2 && yMoveSpeed < xMoveSpeed + 2)){
-                yMoveSpeed += yMoveSpeed/Math.abs(yMoveSpeed);
-            }
-            xMoveSpeed = -Math.abs(xMoveSpeed);
         }
     }
     
