@@ -1,0 +1,11 @@
+PANG - Handleiding
+
+Vang de bal op met je rechthoek en probeer zoveel mogelijk te scoren bij de CPU.
+
+===============
+
+Besturing:
+
+- Druk op ENTER om het spel te starten.
+
+- Gebruik de pijltjes UP en DOWN om je rechthoekje te bewegen.
