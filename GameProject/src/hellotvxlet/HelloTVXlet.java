@@ -1,5 +1,7 @@
 package hellotvxlet;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
 import javax.tv.xlet.*;
@@ -10,14 +12,20 @@ import org.dvb.event.UserEventListener;
 import org.dvb.event.UserEventRepository;
 import org.havi.ui.HScene;
 import org.havi.ui.HSceneFactory;
+import org.havi.ui.HTextButton;
+import org.havi.ui.HVisible;
+import org.havi.ui.event.HActionListener;
 
 
-public class HelloTVXlet implements Xlet , UserEventListener {
+public class HelloTVXlet implements Xlet , UserEventListener, HActionListener {
     
     FieldAndScore background;
     Ball ball;
     Rectangle rectangle1;
     Rectangle rectangle2;
+    
+    private HScene scene;
+    private HTextButton startButton;
     
     public HelloTVXlet() {
 
@@ -31,6 +39,8 @@ public class HelloTVXlet implements Xlet , UserEventListener {
     }
 
     public void startlet() {
+        
+
     
     }
 
@@ -43,11 +53,11 @@ public class HelloTVXlet implements Xlet , UserEventListener {
     }
 
     public void startXlet() throws XletStateChangeException {
-        
-        HScene scene;      
-        
-     scene = HSceneFactory.getInstance().getDefaultHScene();
+     
+        scene = HSceneFactory.getInstance().getDefaultHScene(); // scene geinitialiseerd in HellotvXlet
      // SCHERM = 720 x 576 
+     
+     startButton  = new HTextButton("Start Game",360-150,440,300,50);
      
      background = new FieldAndScore();
      
@@ -59,11 +69,17 @@ public class HelloTVXlet implements Xlet , UserEventListener {
      
      //rectangle1.paint(g);
      
-     
-     scene.add(ball);
-     scene.add(rectangle1);
-     scene.add(rectangle2);
-     scene.add(background);
+      if(!Ball.start){
+      startButton.setBackgroundMode(HVisible.BACKGROUND_FILL);
+      startButton.setBackground(Color.GRAY);
+      scene.add(startButton);
+      
+      startButton.requestFocus();
+      startButton.setActionCommand("startGame");
+      startButton.addHActionListener(this);
+      
+      scene.add(background);
+     }
      
      scene.validate();
      scene.setVisible(true); 
@@ -115,6 +131,21 @@ public class HelloTVXlet implements Xlet , UserEventListener {
             
         } else{
             rectangle1.buttonPressed = false;
+        }
+    }
+    
+    public void actionPerformed(ActionEvent arg0) {
+    //throw new UnsupportedOperationException("Not supported yet.");
+            System.out.println(arg0.getActionCommand());
+        
+    if(arg0.getActionCommand().equals("startGame"))
+    {
+        Ball.start = true;
+        scene.remove(startButton);
+        scene.add(ball);
+        scene.add(rectangle1);
+        scene.add(rectangle2);
+        scene.add(background);
         }
     }
 }
